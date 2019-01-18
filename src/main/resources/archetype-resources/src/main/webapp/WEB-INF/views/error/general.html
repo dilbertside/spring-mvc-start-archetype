@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head (title='Error page')"></head>
+
+<body>
+<div class="container">
+    <div th:replace="fragments/layout :: header"></div>
+    <div th:replace="fragments/components :: alert (type='danger', message=${errorMessage})">Error: Error</div>
+    <div th:replace="fragments/layout :: footer"></div>
+    <div th:replace="fragments/layout :: script"></div>
+</div>
+</body>
+</html>

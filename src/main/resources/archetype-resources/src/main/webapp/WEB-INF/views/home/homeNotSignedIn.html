@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head (title='Welcome to the Spring MVC Quickstart application! Get started quickly by signing up!')"></head>
+
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<div class="container">
+    <div class="text-center">
+        <h1>Test</h1>
+        <p class="lead">
+            Welcome to the Spring <span th:text="${springVersion}">0.0.0</span> MVC Quickstart application!
+        </p>
+        <p>
+            Get started quickly by signing up.
+        </p>
+        <p>
+            <a class="btn btn-success btn-lg" id="signup">Sign up</a>
+        </p>
+    </div>
+    <div th:replace="fragments/layout :: footer">&copy; 2016 The Static Templates</div>
+</div>
+<script th:inline="javascript" type="text/javascript">
+    /* Fill in modal with content loaded with Ajax */
+    $(document).ready(function () {
+        $('#signup').on('click', function () {
+            $("#signup-modal").modal();
+            $("#signup-modal-body").text("");
+            $.ajax({
+                url: "signup",
+                cache: false
+            }).done(function (html) {
+                $("#signup-modal-body").append(html);
+            });
+        })
+    });
+</script>
+<!-- Signup modal -->
+<div th:replace="fragments/components :: modal(id='signup-modal', title='Signup')"></div>
+<div th:replace="fragments/layout :: script"></div>
+</body>
+</html>

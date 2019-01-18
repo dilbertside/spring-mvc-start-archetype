@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head (title=#{view.index.title})"></head>
+
+<body>
+  <div th:replace="fragments/layout :: header"></div>
+  <div class="container">
+      <p class="lead text-center">
+          About
+      </p>
+  </div>
+  <div th:replace="fragments/layout :: footer"></div>
+  <div th:replace="fragments/layout :: script"></div>
+</body>
+</html>

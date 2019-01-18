@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.dilbertside</groupId>
+  <artifactId>spring-mvc-start</artifactId>
+  <version>5.1.0</version>
+  <packaging>maven-archetype</packaging>
+  <name>Spring Web MVC Maven Archetype: Start</name>
+  <description>Archetype for creating Spring Web MVC web application
+Inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype</description>
+  <url>https://github.com/dilbertside/spring-mvc-start-archetype</url>
+  <inceptionYear>2019</inceptionYear>
+  <prerequisites>
+    <maven>3.5.0</maven>
+  </prerequisites>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <defaultGoal>install</defaultGoal>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>3.0.1</version>
+      </extension>
+    </extensions>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/dilbertside/pring-mvc-start-archetype/issues</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Travis CI</system>
+    <url>https://travis-ci.org/dilbertside/spring-mvc-start-archetype</url>
+  </ciManagement>
+  <scm>
+    <connection>scm:git://git@github.com:dilbertside/spring-mvc-start-archetype.git</connection>
+    <developerConnection>scm:git://git@github.com:dilbertside/spring-mvc-start-archetype.git</developerConnection>
+    <url>git://git@github.com:dilbertside/spring-mvc-start-archetype.git</url>
+    <tag>HEAD</tag>
+  </scm>
+</project>
