@@ -35,12 +35,12 @@ PR contributions are welcome as long as there is no Spring Boot dependency inclu
 * Spring MVC web application, with Java config and no Spring Boot
 * [Thymeleaf](http://www.thymeleaf.org/), [Bootstrap](https://getbootstrap.com/) with [WebJars](http://webjars.org)
 * Java Persistence (JPA)
-** Spring Data JPA](https://spring.io/projects/spring-data)
-** Hibernate](http://hibernate.org/orm)
-** HSQLDB](http://hsqldb.org/)
-** H2](http://www.h2database.com/)
-** Postgresql](https://www.postgresql.org/)
-* Testing with [JUnit]( http://junit.org )/[Mockito](https://github.com/mockito/mockito)
+** [Spring Data JPA](https://spring.io/projects/spring-data)
+** [Hibernate](http://hibernate.org/orm)
+** [HSQLDB](http://hsqldb.org/)
+** [H2](http://www.h2database.com/)
+** [Postgresql](https://www.postgresql.org/)
+* Testing with [JUnit](http://junit.org )/[Mockito](https://github.com/mockito/mockito)
 * [Spring Security](https://spring.io/projects/spring-security) 
 * [MongoDB](http://www.mongodb.org/) (Spring Data Mongo)
 * Docker containerization with [Google Jib maven plugin](https://github.com/GoogleContainerTools/jib)
@@ -51,14 +51,15 @@ PR contributions are welcome as long as there is no Spring Boot dependency inclu
 * [Lombok](https://projectlombok.org/) to reduce boilerplate code (cf readme of generated project)
 
 ## TODO
-  Localization improvements
-  View.JS integration
+* Localization improvements
+* View.JS integration
+* migrate JUnit Jupiter
 
 ## Prerequisites
 
 - JDK 8 (tested with Java 11)
 - [Apache Maven](https://maven.apache.org/download.cgi) 3 (tested with 3.6.0)
-- not mandatory [Docker](https://docs.docker.com/install/#supported-platforms) 
+- Not mandatory [Docker](https://docs.docker.com/install/#supported-platforms) 
 
 # Create a new project
 
@@ -68,7 +69,7 @@ Java and maven must be installed.
 ```bash
     mvn archetype:generate \
         -DarchetypeGroupId=com.github.dilbertside \
-        -DarchetypeArtifactId=spring-mvc-start \
+        -DarchetypeArtifactId=spring-mvc-start-archetype\
         -DarchetypeVersion=5.1.0 \
         -DgroupId=my.groupid \
         -DartifactId=my-artifactId \
@@ -88,7 +89,7 @@ mkdir myproject && cd myproject
 
 docker run -it --rm -v "$(pwd)":/usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.0 mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
-      -DarchetypeArtifactId=spring-mvc-start \
+      -DarchetypeArtifactId=spring-mvc-start-archetype\
       -DarchetypeVersion=5.1.0
 ```
 
@@ -142,7 +143,7 @@ Create a new empty directory for your project and navigate into it and then run:
 ```bash
   mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
-      -DarchetypeArtifactId=spring-mvc-start \
+      -DarchetypeArtifactId=spring-mvc-start-archetype\
       -DarchetypeVersion=5.1.0 \
       -DgroupId=com.example.acme \
       -DartifactId=acme \
@@ -160,7 +161,7 @@ Note: The above command will bootstrap a project using the archetype published i
 ```bash
   mvn compile jib:buildTar
   docker load --input target/*.tar
-  docker run acme:0.01-dev
+  docker run acme:0.0.1-dev
 ```
 ## Eclipse IDE
 
