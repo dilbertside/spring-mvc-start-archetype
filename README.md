@@ -70,7 +70,7 @@ Java and maven must be installed.
     mvn archetype:generate \
         -DarchetypeGroupId=com.github.dilbertside \
         -DarchetypeArtifactId=spring-mvc-start-archetype\
-        -DarchetypeVersion=5.1.0 \
+        -DarchetypeVersion=5.1.2 \
         -DgroupId=my.groupid \
         -DartifactId=my-artifactId \
         -Dversion=version \
@@ -87,10 +87,10 @@ Reusing the Maven local repository and in Generating project in Interactive mode
 ```bash
 mkdir myproject && cd myproject
 
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.0 mvn archetype:generate \
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.2 mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
       -DarchetypeArtifactId=spring-mvc-start-archetype\
-      -DarchetypeVersion=5.1.0
+      -DarchetypeVersion=5.1.2
 ```
 
 ## IntelliJ
@@ -101,7 +101,7 @@ docker run -it --rm -v "$(pwd)":/usr/src/mymaven diside/spring-mvc-start-archety
 * Click the `Add Archetype` button
 * Set `Group Id` to `com.github.dilbertside`
 * Set `Artifact Id` to `spring-mvc-start-archetype`
-* Set `Version` to `5.1.0`
+* Set `Version` to `5.1.2`
 * Set `Repository` to `http://dilbertside.github.io/spring-mvc-start-archetype`
 * Click next and create the project
 
@@ -116,7 +116,7 @@ Note: If you would like to create a project using archetype published in your lo
 * Click `Add Archetype` button
 * Set `Archetype Group Id` to `com.github.dilbertside`
 * Set `Archetype Artifact Id` to `spring-mvc-start-archetype`
-* Set `Archetype Version` to `5.1.0`
+* Set `Archetype Version` to `5.1.2`
 * Set `Repository URL` to `http://dilbertside.github.io/spring-mvc-start-archetype`
 * Click `OK` so the Archetype is added to the list
 * Click `Next` and fill in `Group Id`, `Artifact Id` and `Version` of your new project
@@ -144,7 +144,7 @@ Create a new empty directory for your project and navigate into it and then run:
   mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
       -DarchetypeArtifactId=spring-mvc-start-archetype\
-      -DarchetypeVersion=5.1.0 \
+      -DarchetypeVersion=5.1.2 \
       -DgroupId=com.example.acme \
       -DartifactId=acme \
       -Dversion=0.0.1

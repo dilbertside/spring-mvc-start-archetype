@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dilbertside</groupId>
   <artifactId>spring-mvc-start-archetype</artifactId>
-  <version>5.1.1</version>
+  <version>5.1.2</version>
   <packaging>maven-archetype</packaging>
   <name>Spring Web MVC Maven Archetype: Start</name>
   <description>Archetype for creating Spring Web MVC web application
@@ -22,6 +22,8 @@ Inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype</descr
     </license>
   </licenses>
   <properties>
+    <maven-archetype-plugin.version>3.0.1</maven-archetype-plugin.version>
+    <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
@@ -30,7 +32,7 @@ Inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype</descr
       <extension>
         <groupId>org.apache.maven.archetype</groupId>
         <artifactId>archetype-packaging</artifactId>
-        <version>3.0.1</version>
+        <version>${maven-archetype-plugin.version}</version>
       </extension>
     </extensions>
     <pluginManagement>
@@ -38,12 +40,12 @@ Inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype</descr
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-archetype-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>${maven-archetype-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>${maven-resources-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
