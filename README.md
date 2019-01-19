@@ -100,7 +100,7 @@ docker run -it --rm -v "$(pwd)":/usr/src/mymaven diside/spring-mvc-start-archety
 * Check `Create from archetype`
 * Click the `Add Archetype` button
 * Set `Group Id` to `com.github.dilbertside`
-* Set `Artifact Id` to `spring-mvc-start`
+* Set `Artifact Id` to `spring-mvc-start-archetype`
 * Set `Version` to `5.1.0`
 * Set `Repository` to `http://dilbertside.github.io/spring-mvc-start-archetype`
 * Click next and create the project
@@ -115,7 +115,7 @@ Note: If you would like to create a project using archetype published in your lo
 * Make sure `Include snapshot archetypes` is selected
 * Click `Add Archetype` button
 * Set `Archetype Group Id` to `com.github.dilbertside`
-* Set `Archetype Artifact Id` to `spring-mvc-start`
+* Set `Archetype Artifact Id` to `spring-mvc-start-archetype`
 * Set `Archetype Version` to `5.1.0`
 * Set `Repository URL` to `http://dilbertside.github.io/spring-mvc-start-archetype`
 * Click `OK` so the Archetype is added to the list

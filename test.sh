@@ -4,7 +4,7 @@ mvn clean install
 cd target
 mvn archetype:generate \
         -DarchetypeGroupId=com.github.dilbertside \
-        -DarchetypeArtifactId=spring-mvc-start \
+        -DarchetypeArtifactId=spring-mvc-start-archetype \
         -DarchetypeVersion=5.1.0 \
         -DgroupId=com.test.test \
         -Dpackage=com.test.test \
