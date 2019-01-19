@@ -9,7 +9,7 @@
   <name>Spring Web MVC Maven Archetype: Start</name>
   <description>Archetype for creating Spring Web MVC web application
 Inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype</description>
-  <url>https://github.com/dilbertside/spring-mvc-start-archetype</url>
+  <url>https://dilbertside.github.io/spring-mvc-start-archetype</url>
   <inceptionYear>2019</inceptionYear>
   <prerequisites>
     <maven>3.5.0</maven>

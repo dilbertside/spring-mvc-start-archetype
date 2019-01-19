@@ -9,7 +9,7 @@ Spring Web MVC 5.1 start Maven Archetype
 # Summary
 
 The project is a Maven archetype for Spring MVC web application.
-It is heavily inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype and was originally a fork.
+It is inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype and was originally a fork.
 kolorobot archetype is based onto Spring Framework 5.0.x (as of January 2019)
 
 After refactoring a bit to upgrade Spring, the aim became to build a full Spring Framework MVC  Web application only (which should not contain any Spring Boot dependencies). In that purpose some extra configuration have been added Cache, Async, WebJars, Problem
@@ -63,35 +63,53 @@ PR contributions are welcome as long as there is no Spring Boot dependency inclu
 
 # Create a new project
 
+## Docker maven
+
+Reusing the Docker Maven repository and archetype generating project in Interactive mode
+
+### Script
+Download and use [Bash generation script](https://raw.githubusercontent.com/dilbertside/spring-mvc-start-archetype-docker/master/generate.sh) `bash generate.sh`
+
+### Manual
+
+Beware: no pom.xml should be in directory where you run following command.
+
+```bash
+
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.3 mvn archetype:generate \
+      -DarchetypeGroupId=com.github.dilbertside \
+      -DarchetypeArtifactId=spring-mvc-start-archetype\
+      -DarchetypeVersion=5.1.2
+```
+
 ## command line
-Java and maven must be installed.
+
+Prerequisites: Java and Maven must be installed.
+
+add to your ~/.m2/settings.xml a new repo in an activated profile
+
+```
+<repositories>
+  ...
+  <repository>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+  ...
+<repositories>  
+```
+and run interactively in a directory without a pom.xml in it
 
 ```bash
     mvn archetype:generate \
         -DarchetypeGroupId=com.github.dilbertside \
         -DarchetypeArtifactId=spring-mvc-start-archetype\
-        -DarchetypeVersion=5.1.2 \
-        -DgroupId=my.groupid \
-        -DartifactId=my-artifactId \
-        -Dversion=version \
-        -DarchetypeRepository=http://dilbertside.github.io/spring-mvc-start-archetype
+        -DarchetypeVersion=5.1.2
 ```
 
-Note: The above command will bootstrap a project using the archetype published here: http://dilbertside.github.io/spring-mvc-start-archetype
-
-
-## Docker maven
-
-Reusing the Maven local repository and in Generating project in Interactive mode
-
-```bash
-mkdir myproject && cd myproject
-
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.2 mvn archetype:generate \
-      -DarchetypeGroupId=com.github.dilbertside \
-      -DarchetypeArtifactId=spring-mvc-start-archetype\
-      -DarchetypeVersion=5.1.2
-```
 
 ## IntelliJ
 
@@ -102,7 +120,7 @@ docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spri
 * Set `Group Id` to `com.github.dilbertside`
 * Set `Artifact Id` to `spring-mvc-start-archetype`
 * Set `Version` to `5.1.2`
-* Set `Repository` to `http://dilbertside.github.io/spring-mvc-start-archetype`
+* Set `Repository` to `https://dilbertside.github.io/spring-mvc-start-archetype`
 * Click next and create the project
 
 Note: If you would like to create a project using archetype published in your local repository, skip repository field and make sure it is installed locally (see below).
@@ -117,13 +135,12 @@ Note: If you would like to create a project using archetype published in your lo
 * Set `Archetype Group Id` to `com.github.dilbertside`
 * Set `Archetype Artifact Id` to `spring-mvc-start-archetype`
 * Set `Archetype Version` to `5.1.2`
-* Set `Repository URL` to `http://dilbertside.github.io/spring-mvc-start-archetype`
+* Set `Repository URL` to `https://dilbertside.github.io/spring-mvc-start-archetype`
 * Click `OK` so the Archetype is added to the list
 * Click `Next` and fill in `Group Id`, `Artifact Id` and `Version` of your new project
 
-Note: Remember so select `Include snapshot archetypes`. 
+Note: Remember to select `Include snapshot archetypes`. 
 
-If you have any troubles with installation in Eclipse, you may want to have a look at this issue: #74
 
 ## Local repository
 
@@ -138,16 +155,13 @@ To install the archetype in your local repository execute the following commands
 ```
 ### Create a project from a local repository
 
-Create a new empty directory for your project and navigate into it and then run:
+Use a directory without a pom.xml in it and then run:
 
 ```bash
   mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
-      -DarchetypeArtifactId=spring-mvc-start-archetype\
-      -DarchetypeVersion=5.1.2 \
-      -DgroupId=com.example.acme \
-      -DartifactId=acme \
-      -Dversion=0.0.1
+      -DarchetypeArtifactId=spring-mvc-start-archetype \
+      -DarchetypeVersion=5.1.2 
 ```
 
 Note: The above command will bootstrap a project using the archetype published in your local repository.
