@@ -26,7 +26,7 @@ Notes:
 This archetype may not work with prior versions of Spring Framework 5.0.x, or 4.3.x, and Java 1.8
 It uses methods which are not reverse compatible.
 
-When Spring Framework 5.2 will be out a new branch to track progress will be created.
+When Spring Framework 5.2 will be released, a new branch to track progress will be created.
 
 PR contributions are welcome as long as there is no Spring Boot dependency included.
 
@@ -53,7 +53,7 @@ PR contributions are welcome as long as there is no Spring Boot dependency inclu
 ## TODO
 * Localization improvements
 * View.JS integration
-* migrate JUnit Jupiter
+* migrate JUnit to Jupiter
 
 ## Prerequisites
 
@@ -82,7 +82,7 @@ Beware: no pom.xml should be in directory where you run following command.
 
 docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.4 mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
-      -DarchetypeArtifactId=spring-mvc-start-archetype\
+      -DarchetypeArtifactId=spring-mvc-start-archetype \
       -DarchetypeVersion=5.1.4
 ```
 
@@ -108,12 +108,12 @@ add to your ~/.m2/settings.xml a new repo in an activated profile
 and run interactively in a directory without a pom.xml in it
 
 ```bash
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.github.dilbertside \
-        -DarchetypeArtifactId=spring-mvc-start-archetype\
-        -DarchetypeVersion=5.1.4
+  mvn archetype:generate \
+      -DarchetypeGroupId=com.github.dilbertside \
+      -DarchetypeArtifactId=spring-mvc-start-archetype \
+      -DarchetypeVersion=5.1.4
 ```
-
+Note: [script](https://github.com/dilbertside/spring-mvc-start-archetype/blob/master/test.sh) to test generator prior to release might be useful to peruse
 
 ## IntelliJ
 

@@ -19,3 +19,4 @@ hs_err_pid*
 .flattened-pom.xml
 .factorypath
 .classpath
+/pom.xml.versionsBackup
