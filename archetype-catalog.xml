@@ -6,7 +6,7 @@
         <archetype>
             <groupId>com.github.dilbertside</groupId>
             <artifactId>spring-mvc-start-archetype</artifactId>
-            <version>5.1.2</version>
+            <version>5.1.3</version>
             <repository>https://github.com/dilbertside/spring-mvc-start-archetype</repository>
             <description>Spring Web MVC start Maven Archetype</description>
         </archetype>

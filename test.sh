@@ -5,8 +5,8 @@
     type mvn &>/dev/null || ( echo "maven is not available"; exit 1 )
 )>&2
 
-VERSION_SMSA=5.1.2
-VERSION_BOM=5.1.0
+VERSION_SMSA=5.1.3
+VERSION_BOM=5.1.1
 mvn -q versions:set -DnewVersion="$VERSION_SMSA"
 #mvn versions:update-parent "-DparentVersion=$VERSION_BOM"
 #mvn -q versions:set-property -Dproperty=spring-mvc-start-archetype.version -DnewVersion="$VERSION"

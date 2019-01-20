@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.github.dilbertside</groupId>
     <artifactId>bom</artifactId>
-    <version>5.1.0</version>
+    <version>5.1.1</version>
     <relativePath></relativePath>
   </parent>
   <groupId>${groupId}</groupId>

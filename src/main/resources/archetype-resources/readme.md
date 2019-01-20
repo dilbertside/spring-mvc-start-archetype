@@ -14,14 +14,38 @@ IDEA https://projectlombok.org/setup/intellij
 
 # Build
 
+## Docker
+
+Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
+
+```bash
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.3 mvn clean package
+```
+
+## locally
+
+Prerequisites: Java and [Apache Maven](https://maven.apache.org/download.cgi) must be installed.
+
 ```bash
 mvn clean package
 ```
 
-# Test
+# Unit Test
+
+## Docker
+
+Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-mvn test
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.3 mvn test -Ptest
+```
+
+## locally
+
+Prerequisites: Java and [Apache Maven](https://maven.apache.org/download.cgi) must be installed.
+
+```bash
+mvn test -Ptest
 ```
 
 # Run 
@@ -39,11 +63,11 @@ cd apache-tomcat-9.0.14
 bin/startup.sh && tail -n80 -f logs/catalina.out
 ```
 ## Docker container
-it uses Google Jib which does not require to have docker installed on the build machine
- 
-https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#war-projects
+
+it uses Google [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#war-projects) which does not require to have docker installed on the build machine
 
 ### to a remote repo
+
 ```bash
 mvn compile jib:build
 ```
