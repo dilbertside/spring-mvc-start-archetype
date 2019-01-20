@@ -1,15 +1,19 @@
 #prerequisites
 
 - JDK 8
-- Maven 3.5
+- [Apache Maven](https://maven.apache.org/download.cgi) 3.5
 
 ## Project Lombok
-This project uses Project Lombok https://projectlombok.org/ to reduce bloated class property accessors
+This project uses Project [Lombok](https://projectlombok.org/) https://projectlombok.org/ to reduce bloated class property accessors
 
 To benefit in your IDE the Lombok project 
+
 ### Eclipse install
+
 https://projectlombok.org/setup/eclipse
+
 ### IntelliJ install
+
 IDEA https://projectlombok.org/setup/intellij
 
 # Build
@@ -19,7 +23,7 @@ IDEA https://projectlombok.org/setup/intellij
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.3 mvn clean package
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.4 mvn clean package
 ```
 
 ## locally
@@ -37,7 +41,7 @@ mvn clean package
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.3 mvn test -Ptest
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.4 mvn test -Ptest
 ```
 
 ## locally
