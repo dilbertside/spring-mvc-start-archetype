@@ -209,6 +209,9 @@ Note: No additional services are required in order to start the application. Mon
 
 ## Switching to PostgreSQL
 
+Prerequisites:
+ PostgreSQL up and running, tablespace, and credentials valid
+
 * Build and run with the correct profile:
 
 ```bash
@@ -231,6 +234,17 @@ mvn clean package -P dev,h2 help:active-profiles
 
 ```bash
 mvn clean package -P-h2,dev,hsql help:active-profiles
+```
+
+## Switching to MySQL/Maria DB
+
+Prerequisites:
+ MySQL up and running, tablespace, and credentials valid
+ 
+* Build and run with the correct profile:
+
+```bash
+mvn clean package -P-h2,dev,mysql help:active-profiles
 ```
 
 ## Enabling MongoDB repositories

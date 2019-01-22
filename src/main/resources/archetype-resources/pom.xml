@@ -469,6 +469,29 @@
       </dependencies>
     </profile>
     <profile>
+      <id>mysql</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <dataSource.driverClassName>com.mysql.jdbc.Driver</dataSource.driverClassName>
+        <dataSource.url><![CDATA[jdbc:mysql://localhost:3306/${artifactId}?createDatabaseIfNotExist=true&amp;autoReconnect=true]]></dataSource.url>
+        <dataSource.username>${artifactId}</dataSource.username>
+        <dataSource.password>${artifactId}</dataSource.password>
+        <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+        <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+        <hibernate.show_sql>false</hibernate.show_sql>
+        <hibernate.format_sql>false</hibernate.format_sql>
+        <hibernate.use_sql_comments>false</hibernate.use_sql_comments>
+      </properties>
+      <dependencies>
+        <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+      </dependency>
+      </dependencies>
+    </profile>
+    <profile>
       <id>test</id>
       <activation>
         <activeByDefault>false</activeByDefault>
