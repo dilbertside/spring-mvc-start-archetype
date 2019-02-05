@@ -81,6 +81,12 @@ mvn compile jib:build
 mvn jib:exportDockerContext
 mvn jib:dockerBuild
 ```
+or with a maven container 
+
+```bash
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -v /var/run/docker.sock:/var/run/docker.sock -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:latest sh -c "mvn compile jib:dockerBuild"
+```
+
 
 ### save image container as archive
 
