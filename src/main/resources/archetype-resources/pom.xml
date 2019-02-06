@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.github.dilbertside</groupId>
-    <artifactId>bom</artifactId>
-    <version>5.1.5</version>
+    <groupId>${parentGroupId}</groupId>
+    <artifactId>${parentArtifactId}</artifactId>
+    <version>${parentVersion}</version>
     <relativePath></relativePath>
   </parent>
   <groupId>${groupId}</groupId>
@@ -14,7 +14,7 @@
   <name>Spring Web MVC Application</name>
   <inceptionYear>2019</inceptionYear>
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>${javaVersion}</java.version>
   </properties>
   <dependencies>
     <!-- Spring -->
@@ -199,13 +199,13 @@
     </dependency>
     <!-- Test -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
+      <artifactId>mockito-junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -280,6 +280,11 @@
         <configuration>
           <path>/</path>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -487,9 +492,9 @@
       </properties>
       <dependencies>
         <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-      </dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+        </dependency>
       </dependencies>
     </profile>
     <profile>

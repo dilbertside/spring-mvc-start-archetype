@@ -49,11 +49,11 @@ PR contributions are welcome as long as there is no Spring Boot dependency inclu
 * [Jackson JSON/XML/CSV data-binding functionality](http://github.com/FasterXML/jackson)
 * [Problem, implementation of the application/problem+json draft](https://github.com/zalando/problem)
 * [Lombok](https://projectlombok.org/) to reduce boilerplate code (cf readme of generated project)
+* Unit tests with [JUnit 5 Jupiter](https://junit.org/junit5/) and [Mockito](https://github.com/mockito/mockito)
 
 ## TODO
 * Localization improvements
 * View.JS integration
-* migrate JUnit to Jupiter
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ Beware: no pom.xml should be in directory where you run following command.
 docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.4 mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
       -DarchetypeArtifactId=spring-mvc-start-archetype \
-      -DarchetypeVersion=5.1.4
+      -DarchetypeVersion=5.1.5
 ```
 
 ## command line
@@ -111,7 +111,7 @@ and run interactively in a directory without a pom.xml in it
   mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
       -DarchetypeArtifactId=spring-mvc-start-archetype \
-      -DarchetypeVersion=5.1.4
+      -DarchetypeVersion=5.1.5
 ```
 Note: [script](https://github.com/dilbertside/spring-mvc-start-archetype/blob/master/test.sh) to test generator prior to release might be useful to peruse
 
@@ -123,7 +123,7 @@ Note: [script](https://github.com/dilbertside/spring-mvc-start-archetype/blob/ma
 * Click the `Add Archetype` button
 * Set `Group Id` to `com.github.dilbertside`
 * Set `Artifact Id` to `spring-mvc-start-archetype`
-* Set `Version` to `5.1.4`
+* Set `Version` to `5.1.5`
 * Set `Repository` to `https://dilbertside.github.io/spring-mvc-start-archetype`
 * Click next and create the project
 
@@ -138,7 +138,7 @@ Note: If you would like to create a project using archetype published in your lo
 * Click `Add Archetype` button
 * Set `Archetype Group Id` to `com.github.dilbertside`
 * Set `Archetype Artifact Id` to `spring-mvc-start-archetype`
-* Set `Archetype Version` to `5.1.4`
+* Set `Archetype Version` to `5.1.5`
 * Set `Repository URL` to `https://dilbertside.github.io/spring-mvc-start-archetype`
 * Click `OK` so the Archetype is added to the list
 * Click `Next` and fill in `Group Id`, `Artifact Id` and `Version` of your new project
@@ -165,7 +165,7 @@ Use a directory without a pom.xml in it and then run:
   mvn archetype:generate \
       -DarchetypeGroupId=com.github.dilbertside \
       -DarchetypeArtifactId=spring-mvc-start-archetype \
-      -DarchetypeVersion=5.1.4 
+      -DarchetypeVersion=5.1.5
 ```
 
 Note: The above command will bootstrap a project using the archetype published in your local repository.

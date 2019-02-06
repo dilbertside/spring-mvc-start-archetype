@@ -1,12 +1,12 @@
 package ${package}.account;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,12 +21,14 @@ import ${package}.service.UserService;
 
 import static java.util.function.Predicate.isEqual;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.Collections;
 import java.util.Optional;
 
-@RunWith(MockitoJUnitRunner.class)
+@Tag("service")
+@ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
 
 	@InjectMocks
@@ -44,10 +46,8 @@ public class UserServiceTest {
 	@Mock
 	private PasswordEncoder passwordEncoder;
 
-	@Rule
-	public ExpectedException thrown = ExpectedException.none();
-
 	//@Test
+	//@DisplayName("")
 	public void shouldInitializeWithTwoDemoUsers() {
 		// act
 		//userService.initialize();
@@ -56,29 +56,29 @@ public class UserServiceTest {
 	}
 
 	@Test
+	@DisplayName("raise exception when user not found")
 	public void shouldThrowExceptionWhenUserNotFound() {
-		// arrange
-		thrown.expect(UsernameNotFoundException.class);
-		thrown.expectMessage("User user@example.com was not found in the database");
-
-		//when(userRepositoryMock.findOneByEmail("user@example.com")).thenReturn(null);
-		// act
-		userDetailsService.loadUserByUsername("user@example.com");
+		
+	  Throwable exception = assertThrows(UsernameNotFoundException.class,
+        ()->{
+          userDetailsService.loadUserByUsername("user@example.com");
+        });
+		assertEquals("User user@example.com was not found in the database", exception.getMessage());
 	}
 
 	@Test
+	@DisplayName("user service  load by user name")
 	public void shouldReturnUserDetails() {
-		// arrange
+		
 	  when(authorityRepositoryMock.findOneByName("ROLE_USER")).thenReturn(Optional.of(new Authority("ROLE_USER")));
 		User demoUser = new User("user", "user@example.com", "demo", Collections.singleton(authorityRepositoryMock.findOneByName("ROLE_USER").get()));
 		demoUser.setActivated(true);
 		//when(userRepositoryMock.findOneByEmail("user@example.com")).thenReturn(Optional.of(demoUser));
 
 		when(userRepositoryMock.findOneByLogin("user")).thenReturn(Optional.of(demoUser));
-		// act
+		
 		UserDetails userDetails = userDetailsService.loadUserByUsername("user");
 
-		// assert
 		assertThat(demoUser.getLogin()).isEqualTo(userDetails.getUsername());
 		assertThat(demoUser.getPassword()).isEqualTo(userDetails.getPassword());
 		assertThat(hasAuthority(userDetails, demoUser.getRoles().iterator().next().getName())).isTrue();

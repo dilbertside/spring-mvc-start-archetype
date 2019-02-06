@@ -15,12 +15,25 @@
     <requiredProperty key="package">
       <defaultValue>org.spring.webapp</defaultValue>
     </requiredProperty>
+    <requiredProperty key="parentGroupId">
+      <defaultValue>com.github.dilbertside</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="parentArtifactId">
+      <defaultValue>bom</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="parentVersion">
+      <defaultValue>5.1.6</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="javaVersion">
+      <defaultValue>1.8</defaultValue>
+    </requiredProperty>
   </requiredProperties>
 	<fileSets>
 		<fileSet filtered="false" >
 			<directory></directory>
 			<includes>
 				<include>.gitignore</include>
+        <include>readme.md</include>
 			</includes>
 		</fileSet>
     <fileSet filtered="false" >
