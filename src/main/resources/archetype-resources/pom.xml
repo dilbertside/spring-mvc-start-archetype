@@ -238,6 +238,11 @@
       <artifactId>spring-security-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>
@@ -355,7 +360,7 @@
         </configuration>
         <executions>
           <execution>
-            <phase>install</phase>
+            <phase>deploy</phase>
             <goals>
               <goal>build</goal>
             </goals>
@@ -494,29 +499,6 @@
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-      </dependencies>
-    </profile>
-    <profile>
-      <id>test</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <properties>
-        <dataSource.driverClassName>org.hsqldb.jdbcDriver</dataSource.driverClassName>
-        <dataSource.url>jdbc:hsqldb:mem:test</dataSource.url>
-        <dataSource.username>sa</dataSource.username>
-        <dataSource.password />
-        <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
-        <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
-        <hibernate.show_sql>false</hibernate.show_sql>
-        <hibernate.format_sql>false</hibernate.format_sql>
-        <hibernate.use_sql_comments>false</hibernate.use_sql_comments>
-      </properties>
-      <dependencies>
-        <dependency>
-          <groupId>org.hsqldb</groupId>
-          <artifactId>hsqldb</artifactId>
         </dependency>
       </dependencies>
     </profile>

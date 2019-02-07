@@ -4,7 +4,9 @@ Spring Web MVC 5.1 start Maven Archetype
 # Status
 
 [![Release](https://jitpack.io/v/dilbertside/spring-mvc-start-archetype.svg)](https://jitpack.io/#dilbertside/spring-mvc-start-archetype)
-[![Build Status](https://travis-ci.org/dilbertside/spring-mvc-start-archetype.svg)](https://travis-ci.org/dilbertside/spring-mvc-start-archetype)
+[![Build Status](https://travis-ci.org/dilbertside/spring-mvc-start-archetype.svg)](https://travis-ci.org/dilbertside/spring-mvc-start-archetype) [ChangeLog](https://raw.githubusercontent.com/dilbertside/spring-mvc-start-archetype/master/changelog.md)
+
+[Heroku Demo application](https://spring-mvc-start-demo.herokuapp.com/). Application might be sleeping, please wait few seconds as it runs on [free plan](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping), Thank you.
 
 # Summary
 
@@ -62,6 +64,16 @@ PR contributions are welcome as long as there is no Spring Boot dependency inclu
 - Not mandatory [Docker](https://docs.docker.com/install/#supported-platforms) 
 
 # Create a new project
+
+## Demo project
+
+A demo generated artifact is available at [spring-mvc-start-archetype-demo repo](https://github.com/dilbertside/spring-mvc-start-archetype-demo)
+
+```bash 
+git clone https://github.com/dilbertside/spring-mvc-start-archetype-demo.git spring-mvc-webapp-demo
+cd spring-mvc-webapp-demo
+mvn package -Ph2
+```
 
 ## Docker maven
 
@@ -194,7 +206,7 @@ Navigate to newly created project directory (`my-artifactId`) and then run:
   mvn test tomcat7:run
 ```
 
-> Note: I do not recommend this way of running the artifact. Tomcat Maven Plugin Version 2.2 was released on 2013-11-11 
+> Note: It is not recommended to run the artifact, Tomcat Maven Plugin Version 2.2 was released on 2013-11-11
 
 ### Test in the browser
 -------------------

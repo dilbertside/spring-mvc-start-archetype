@@ -23,7 +23,7 @@ IDEA https://projectlombok.org/setup/intellij
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.4 mvn clean package
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.5 mvn clean package
 ```
 
 ## locally
@@ -41,7 +41,7 @@ mvn clean package
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.4 mvn test -Ptest
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.5 mvn test
 ```
 
 ## locally
@@ -49,7 +49,7 @@ docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spri
 Prerequisites: Java and [Apache Maven](https://maven.apache.org/download.cgi) must be installed.
 
 ```bash
-mvn test -Ptest
+mvn test
 ```
 
 # Run 
