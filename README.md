@@ -4,9 +4,12 @@ Spring Web MVC 5.1 start Maven Archetype
 # Status
 
 [![Release](https://jitpack.io/v/dilbertside/spring-mvc-start-archetype.svg)](https://jitpack.io/#dilbertside/spring-mvc-start-archetype)
-[![Build Status](https://travis-ci.org/dilbertside/spring-mvc-start-archetype.svg)](https://travis-ci.org/dilbertside/spring-mvc-start-archetype) [ChangeLog](https://raw.githubusercontent.com/dilbertside/spring-mvc-start-archetype/master/changelog.md)
+[![Build Status](https://travis-ci.org/dilbertside/spring-mvc-start-archetype.svg)](https://travis-ci.org/dilbertside/spring-mvc-start-archetype) 
 
-[Heroku Demo application](https://spring-mvc-start-demo.herokuapp.com/). Application might be sleeping, please wait few seconds as it runs on [free plan](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping), Thank you.
+## Try it out!
+
+[Demo application](https://spring-mvc-start-demo.herokuapp.com/) on [Heroku](https://www.heroku.com/home)
+Application might be sleeping, please wait few seconds as it runs on [free plan](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping), Thank you.
 
 # Summary
 
@@ -31,6 +34,8 @@ It uses methods which are not reverse compatible.
 When Spring Framework 5.2 will be released, a new branch to track progress will be created.
 
 PR contributions are welcome as long as there is no Spring Boot dependency included.
+
+[ChangeLog](https://raw.githubusercontent.com/dilbertside/spring-mvc-start-archetype/master/changelog.md)
 
 ## Generated project characteristics
 * Bill of Material
