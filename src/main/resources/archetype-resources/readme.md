@@ -1,4 +1,4 @@
-#prerequisites
+# Prerequisites
 
 - JDK 8
 - [Apache Maven](https://maven.apache.org/download.cgi) 3.5

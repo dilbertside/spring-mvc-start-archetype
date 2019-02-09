@@ -8,8 +8,10 @@ package ${package}.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.ContextStartedEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class AppInitService implements ApplicationListener<ContextRefreshedEvent>{
+public class AppInitService {
 
   private UserService userService;
 
@@ -37,12 +39,31 @@ public class AppInitService implements ApplicationListener<ContextRefreshedEvent
     this.environment = environment;
   }
 
-  @Override
-  public void onApplicationEvent(ContextRefreshedEvent event) {
+  /**
+   * called twice: once by root context and 2nd time by dispatcher
+   * @param event {@link ContextRefreshedEvent} to filter
+   */
+  @EventListener({ContextRefreshedEvent.class})
+  public void onContextRefreshedEvent(ContextRefreshedEvent event) {
+    if (null != event.getApplicationContext().getParent()) {// 2nd pass only
+      initDefaultSecurityUsers();
+    }
+  }
+  
+  /**
+   * It would be nice to have this event instead of having {@link ContextStartedEvent} called twice
+   * <br> 
+   * {@link AbstractApplicationContext#start()} publish this event but as comment gstackoverflow, how to call it?, no obvious hook provided 
+   * https://stackoverflow.com/questions/5728376/spring-applicationlistener-is-not-receiving-events#comment73852040_5728681 
+   * @param event {@link ContextStartedEvent} to filter
+   */
+  @EventListener({ContextStartedEvent.class})
+  public void onContextStartedEvent(ContextStartedEvent event) {
     initDefaultSecurityUsers();
   }
 
   protected void initDefaultSecurityUsers() {
+    // if database is empty, we fill it with required data
     if (userService.count() == 0) {
       userService.createDefaultAuthorities("ROLE_ADMIN", "ROLE_API", "ROLE_USER", "ROLE_ACTUATOR");
       userService.createUser(environment.getProperty("app.security.admin.username", "admin"), environment.getProperty("app.security.admin.password", "admin"), 

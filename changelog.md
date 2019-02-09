@@ -3,8 +3,10 @@
 ## 5.1.6 snapshot
 
 * refactor JPA configuration to detect dialect if not set
-* remove maven profile test
 * really use embedded database for unit test
+* remove maven profile test (useless with refactoring)
+* add configuration to deploy on Heroku for demo application
+* use @EventListener instead of implements ApplicationListener
 
 ## 5.1.5
 
@@ -16,7 +18,7 @@
 
 ## 5.1.4
 
-* bump BOM to 5.1.5
+* bump BoM to 5.1.5
 
 ## 5.1.3
 

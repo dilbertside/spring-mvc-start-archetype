@@ -9,6 +9,7 @@ Spring Web MVC 5.1 start Maven Archetype
 ## Try it out!
 
 [Demo application](https://spring-mvc-start-demo.herokuapp.com/) on [Heroku](https://www.heroku.com/home)
+
 Application might be sleeping, please wait few seconds as it runs on [free plan](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping), Thank you.
 
 # Summary

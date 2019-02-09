@@ -59,18 +59,17 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
   @Override
   protected void customizeRegistration(ServletRegistration.Dynamic registration) {
     registration.setInitParameter("defaultHtmlEscape", "true");
-    registration.setInitParameter("spring.profiles.active", "default");
   }
 
 
   //@Profile beans are loaded via root context
   @Override
   protected WebApplicationContext createRootApplicationContext() {
-    WebApplicationContext context = super.createRootApplicationContext();
-    Assert.isInstanceOf(AnnotationConfigWebApplicationContext.class, context, "safety upgrade, RootApplicationContext should be AnnotationConfigWebApplicationContext");
-    environment = ((ConfigurableEnvironment)context.getEnvironment());
+    WebApplicationContext wac = super.createRootApplicationContext();
+    Assert.isInstanceOf(AnnotationConfigWebApplicationContext.class, wac, "safety upgrade, RootApplicationContext should be AnnotationConfigWebApplicationContext");
+    environment = ((ConfigurableEnvironment)wac.getEnvironment());
     environment.setActiveProfiles(environment.getProperty("spring.profiles.active", "dev"));
-    return context;
+    return wac;
   }
   
   private void addServletH2(ServletContext container) {
