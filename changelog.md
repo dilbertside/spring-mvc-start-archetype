@@ -7,6 +7,7 @@
 * remove maven profile test (useless with refactoring)
 * add configuration to deploy on Heroku for demo application
 * use @EventListener instead of implements ApplicationListener
+* increase test coverage to 45% with coveralls
 
 ## 5.1.5
 

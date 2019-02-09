@@ -27,7 +27,7 @@ class SignupController {
   }
 
   @GetMapping("signup")
-	String signup(Model model, @RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {
+	public String signup(Model model, @RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {
 		model.addAttribute(new SignupForm());
 		if (Ajax.isAjaxRequest(requestedWith)) {
 			return SIGNUP_VIEW_NAME.concat(" :: signupForm");
@@ -36,7 +36,7 @@ class SignupController {
 	}
 
 	@PostMapping("signup")
-	String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra) {
+	public String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra) {
 		if (errors.hasErrors()) {
 			return SIGNUP_VIEW_NAME;
 		}

@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 class HomeController {
 
 	@ModelAttribute("module")
-	String module() {
+	public String module() {
 		return "home";
 	}
 
 	@GetMapping("/")
-	String index(Principal principal, Model model) {
+	public String index(Principal principal, Model model) {
 		model.addAttribute("springVersion", SpringVersion.getVersion());
 		return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
 	}
