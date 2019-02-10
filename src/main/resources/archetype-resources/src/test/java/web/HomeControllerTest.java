@@ -1,4 +1,7 @@
-package  ${package}.web;
+#set( $dollar = '$' )
+#set( $pound = '#' )
+#set( $escape = '\' )
+package ${package}.web;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
@@ -11,7 +14,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
-import  ${package}.config.WebSecurityConfigurationAware;
+import ${package}.config.WebSecurityConfigurationAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -24,7 +27,7 @@ public class HomeControllerTest extends WebSecurityConfigurationAware {
   protected MockHttpSession session;
   
   /**
-   * Test method for {@link  ${package}.web.HomeController#index()}.
+   * Test method for {@link ${package}.web.HomeController${pound}index(java.security.Principal, org.springframework.ui.Model)}.
    */
   @Test
   @DisplayName("show home page no credentials")
@@ -45,7 +48,7 @@ public class HomeControllerTest extends WebSecurityConfigurationAware {
   }
   
   /**
-   * Test method for {@link  ${package}.web.HomeController#index()}.
+   * Test method for {@link ${package}.web.HomeController${pound}index()}.
    */
   @Test
   @DisplayName("show home page with credentials")

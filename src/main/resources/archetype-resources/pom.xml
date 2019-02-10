@@ -5,7 +5,7 @@
     <groupId>${parentGroupId}</groupId>
     <artifactId>${parentArtifactId}</artifactId>
     <version>${parentVersion}</version>
-    <relativePath></relativePath>
+    <relativePath />
   </parent>
   <groupId>${groupId}</groupId>
   <artifactId>${artifactId}</artifactId>
@@ -14,14 +14,148 @@
   <name>Spring Web MVC Application</name>
   <inceptionYear>2019</inceptionYear>
   <properties>
+    <heroku-appName>spring-mvc-start-demo</heroku-appName>
     <java.version>${javaVersion}</java.version>
-    <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+    <!-- JSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jdk8</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-afterburner</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <artifactId>caffeine</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+    </dependency>
+    <!-- @Inject -->
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+    </dependency>
+    <!-- Servlet -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+    </dependency>
+    <!-- Utilities -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Avoid: javax.validation.ValidationException: HV000183: Unable to load 'javax.el.ExpressionFactory' -->
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>el-impl</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-library</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Persistence -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <!-- Avoid issue #72 Could not initialize class org.thymeleaf.templateresolver.ServletContextTemplateResolver due to 'validation is not supported' -->
+      <exclusions>
+        <exclusion>
+          <artifactId>pull-parser</artifactId>
+          <groupId>pull-parser</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-envers</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-java8</artifactId>
+    </dependency>
+    <!-- Validation -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Test -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.objenesis</groupId>
+      <artifactId>objenesis</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
     <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
+      <artifactId>spring-aspects</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -29,12 +163,35 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-aspects</artifactId>
+      <artifactId>spring-orm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <!-- Spring Data -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-mongodb</artifactId>
     </dependency>
     <!-- Security -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
@@ -57,15 +214,11 @@
     </dependency>
     <dependency>
       <groupId>org.thymeleaf.extras</groupId>
-      <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-java8time</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>webjars-locator</artifactId>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity5</artifactId>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
@@ -77,172 +230,19 @@
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
+      <artifactId>font-awesome</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
       <artifactId>jquery</artifactId>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
-      <artifactId>font-awesome</artifactId>
-    </dependency>
-    <!-- Persistence -->
-    <dependency>
-      <groupId>com.github.ben-manes.caffeine</groupId>
-      <artifactId>caffeine</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <!-- Avoid issue #72 Could not initialize class org.thymeleaf.templateresolver.ServletContextTemplateResolver due to 'validation is not supported' -->
-      <exclusions>
-        <exclusion>
-          <artifactId>pull-parser</artifactId>
-          <groupId>pull-parser</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-envers</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-java8</artifactId>
-    </dependency>
-    <!-- Avoid: javax.validation.ValidationException: HV000183: Unable to load 'javax.el.ExpressionFactory' -->
-    <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>el-impl</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <!-- Spring Data -->
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-mongodb</artifactId>
-    </dependency>
-    <!-- Validation -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-    </dependency>
-    <!-- Logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-    </dependency>
-    <!-- @Inject -->
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.mail</groupId>
-      <artifactId>javax.mail</artifactId>
-    </dependency>
-    <!-- Servlet -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
+      <artifactId>webjars-locator</artifactId>
     </dependency>
     <dependency>
       <groupId>org.zalando</groupId>
       <artifactId>problem-spring-web</artifactId>
-    </dependency>
-    <!-- JSON -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.module</groupId>
-      <artifactId>jackson-module-afterburner</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jdk8</artifactId>
-    </dependency>
-    <!-- Utilities -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <!-- Test -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-library</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.objenesis</groupId>
-      <artifactId>objenesis</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <scope>test</scope>
     </dependency>
   </dependencies>
   <repositories>
@@ -256,28 +256,38 @@
   </repositories>
   <build>
     <defaultGoal>clean sortpom:sort package</defaultGoal>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <excludes>
-          <exclude>i18n/*.properties</exclude>
-          <exclude>*.properties</exclude>
-        </excludes>
-      </resource>
-      <resource>
-        <filtering>true</filtering>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>i18n/*.properties</include>
-          <include>*.properties</include>
-        </includes>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>com.github.ekryd.sortpom</groupId>
         <artifactId>sortpom-maven-plugin</artifactId>
         <version>${maven-sortpom-plugin.version}</version>
+      </plugin>
+
+      <plugin>
+        <!-- https://github.com/heroku/heroku-maven-plugin -->
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>${heroku-maven-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>${maven-dependency-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven-resources-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${maven-war-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
@@ -287,95 +297,14 @@
           <path>/</path>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire-plugin.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin.version}</version>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>${lombok.version}</version>
-            </path>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>${maven-war-plugin.version}</version>
-        <configuration>
-          <warName>${artifactId}-${version}</warName>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>deploy</id>
-            <phase>deploy</phase>
-            <goals>
-              <goal>sources</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven-resources-plugin.version}</version>
-        <configuration>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <!-- https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#quickstart -->
-        <groupId>com.google.cloud.tools</groupId>
-        <artifactId>jib-maven-plugin</artifactId>
-        <version>${jib-maven-plugin.version}</version>
-        <configuration>
-          <to>
-            <image>${project.artifactId}:${project.version}-${profile.build}</image>
-          </to>
-          <container>
-            <!-- <ports>
-              <port>${server.port}</port>
-              </ports> -->
-            <environment>
-              <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-              <SPRING_PROFILES_ACTIVE>${spring.profiles.active}</SPRING_PROFILES_ACTIVE>
-              <JAVA_TOOL_OPTIONS>-Djava.security.egd=file:/dev/./urandom -Xms256m -Xmx512m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap</JAVA_TOOL_OPTIONS>
-              <TZ>${docker.image.tz}</TZ>
-            </environment>
-            <useCurrentTimestamp>true</useCurrentTimestamp>
-          </container>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>deploy</phase>
-            <goals>
-              <goal>build</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
   <profiles>
     <profile>
       <id>prod</id>
       <properties>
-        <spring.profiles.active>prod</spring.profiles.active>
         <profile.build>prod</profile.build>
+        <spring.profiles.active>prod</spring.profiles.active>
       </properties>
       <dependencies>
         <dependency>
@@ -387,8 +316,8 @@
     <profile>
       <id>staging</id>
       <properties>
-        <spring.profiles.active>staging</spring.profiles.active>
         <profile.build>uat</profile.build>
+        <spring.profiles.active>staging</spring.profiles.active>
       </properties>
       <dependencies>
         <dependency>
@@ -403,12 +332,12 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <spring.profiles.active>dev</spring.profiles.active>
-        <profile.build>dev</profile.build>
         <!-- to run locally use docker: docker run - -name maildev -p 1080:80 -d -p 1025:25 djfarrelly/maildev -->
         <mail.smtp.host>localhost</mail.smtp.host>
         <mail.smtp.password />
         <mail.smtp.port>1025</mail.smtp.port>
+        <profile.build>dev</profile.build>
+        <spring.profiles.active>dev</spring.profiles.active>
       </properties>
     </profile>
     <profile>
@@ -418,13 +347,13 @@
       </activation>
       <properties>
         <dataSource.driverClassName>org.h2.Driver</dataSource.driverClassName>
+        <dataSource.password />
         <dataSource.url>jdbc:h2:mem:${artifactId}</dataSource.url>
         <dataSource.username>sa</dataSource.username>
-        <dataSource.password />
         <hibernate.dialect>org.hibernate.dialect.H2Dialect</hibernate.dialect>
+        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
         <hibernate.show_sql>false</hibernate.show_sql>
-        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.use_sql_comments>false</hibernate.use_sql_comments>
       </properties>
       <dependencies>
@@ -441,13 +370,13 @@
       </activation>
       <properties>
         <dataSource.driverClassName>org.hsqldb.jdbcDriver</dataSource.driverClassName>
+        <dataSource.password />
         <dataSource.url>jdbc:hsqldb:mem:${artifactId}</dataSource.url>
         <dataSource.username>sa</dataSource.username>
-        <dataSource.password />
         <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
         <hibernate.show_sql>false</hibernate.show_sql>
-        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.use_sql_comments>false</hibernate.use_sql_comments>
       </properties>
       <dependencies>
@@ -464,13 +393,13 @@
       </activation>
       <properties>
         <dataSource.driverClassName>org.postgresql.Driver</dataSource.driverClassName>
+        <dataSource.password>${artifactId}</dataSource.password>
         <dataSource.url>jdbc:postgresql://localhost:5432/${artifactId}</dataSource.url>
         <dataSource.username>${artifactId}</dataSource.username>
-        <dataSource.password>${artifactId}</dataSource.password>
         <hibernate.dialect>org.hibernate.dialect.PostgreSQL9Dialect</hibernate.dialect>
+        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
         <hibernate.show_sql>false</hibernate.show_sql>
-        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.use_sql_comments>false</hibernate.use_sql_comments>
       </properties>
       <dependencies>
@@ -487,13 +416,13 @@
       </activation>
       <properties>
         <dataSource.driverClassName>com.mysql.jdbc.Driver</dataSource.driverClassName>
+        <dataSource.password>${artifactId}</dataSource.password>
         <dataSource.url><![CDATA[jdbc:mysql://localhost:3306/${artifactId}?createDatabaseIfNotExist=true&amp;autoReconnect=true]]></dataSource.url>
         <dataSource.username>${artifactId}</dataSource.username>
-        <dataSource.password>${artifactId}</dataSource.password>
         <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
         <hibernate.show_sql>false</hibernate.show_sql>
-        <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.use_sql_comments>false</hibernate.use_sql_comments>
       </properties>
       <dependencies>
@@ -502,6 +431,54 @@
           <artifactId>mysql-connector-java</artifactId>
         </dependency>
       </dependencies>
+    </profile>
+    <profile>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>dockerfile-maven-plugin</artifactId>
+            <version>${dockerfile-maven-plugin.version}</version>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>jib</id>
+      <build>
+        <plugins>
+          <plugin>
+            <!-- https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#quickstart -->
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>${jib-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <phase>install</phase>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <to>
+                <image>${project.artifactId}:${project.version}-${profile.build}</image>
+              </to>
+              <container>
+                <!-- <ports>
+                  <port>${server.port}</port>
+                  </ports> -->
+                <environment>
+                  <JAVA_TOOL_OPTIONS>-Djava.security.egd=file:/dev/./urandom -Xms256m -Xmx512m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap</JAVA_TOOL_OPTIONS>
+                  <TZ>${docker.image.tz}</TZ>
+                </environment>
+                <useCurrentTimestamp>true</useCurrentTimestamp>
+              </container>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
     <profile>
       <id>coverage</id>
@@ -520,6 +497,14 @@
             </configuration>
           </plugin>
           <plugin>
+            <groupId>org.eluder.coveralls</groupId>
+            <artifactId>coveralls-maven-plugin</artifactId>
+            <version>${coveralls-maven-plugin.version}</version>
+            <configuration>
+              <repoToken>ZwO0xOkSyPFxrtqDqc0cRickq5MNMx2sU</repoToken>
+            </configuration>
+          </plugin>
+          <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>${jacoco-maven-plugin.version}</version>
@@ -531,6 +516,12 @@
                 </goals>
               </execution>
             </executions>
+            <configuration>
+              <excludes>
+                <exclude>**/dto/*</exclude>
+                <exclude>**/entity/*</exclude>
+              </excludes>
+            </configuration>
           </plugin>
         </plugins>
       </build>

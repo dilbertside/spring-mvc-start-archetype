@@ -12,7 +12,7 @@
 	</appender>
 
 	<jmxConfigurator />
-	
+
   <logger name="${package}" level="ALL" />
 
 	<root level="WARN">

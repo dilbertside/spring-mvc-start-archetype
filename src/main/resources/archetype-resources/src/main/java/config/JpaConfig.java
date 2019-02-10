@@ -5,8 +5,7 @@ import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+import ${package}.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +28,8 @@ import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 
-import ${package}.Application;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableTransactionManagement
@@ -48,6 +48,7 @@ class JpaConfig {
   Environment environment;
 
   @Bean
+  @Profile({"!test"})
   public DataSource dataSource() {
     HikariConfig config = new HikariConfig();
     config.setDriverClassName(environment.getProperty("dataSource.driverClassName"));

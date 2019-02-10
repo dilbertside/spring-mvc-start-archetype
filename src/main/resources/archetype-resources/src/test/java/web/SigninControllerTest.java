@@ -1,3 +1,6 @@
+#set( $dollar = '$' )
+#set( $pound = '#' )
+#set( $escape = '\' )
 package ${package}.web;
 
 import static org.hamcrest.Matchers.allOf;
@@ -20,7 +23,7 @@ import ${package}.config.WebSecurityConfigurationAware;
 public class SigninControllerTest extends WebSecurityConfigurationAware {
     
   /**
-   * Test method for {@link ${package}.web.SigninController#signin()}.
+   * Test method for {@link ${package}.web.SigninController${pound}signin()}.
    */
   @Test
   @DisplayName("show signin form")

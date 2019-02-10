@@ -1,3 +1,6 @@
+#set( $dollar = '$' )
+#set( $pound = '#' )
+#set( $escape = '\' )
 package ${package}.web;
 
 import static org.hamcrest.Matchers.allOf;
@@ -17,7 +20,7 @@ import ${package}.config.WebSecurityConfigurationAware;
 public class SignupControllerTest extends WebSecurityConfigurationAware {
     
   /**
-   * Test method for {@link ${package}.web.SignupController#signup(org.spring.webapp.dto.SignupForm, org.springframework.validation.Errors, org.springframework.web.servlet.mvc.support.RedirectAttributes)}.
+   * Test method for {@link ${package}.web.SignupController${pound}signup(org.spring.webapp.dto.SignupForm, org.springframework.validation.Errors, org.springframework.web.servlet.mvc.support.RedirectAttributes)}.
    */
   @Test
   @DisplayName("show signup form")

@@ -8,6 +8,7 @@
 * add configuration to deploy on Heroku for demo application
 * use @EventListener instead of implements ApplicationListener
 * increase test coverage to 51% with coveralls, implement HomeControllerTest, AboutControllerTest, SigninControllerTest, ErrorControllerTest (total 21 tests)
+* add Spotify docker image assembly recipe
 
 ## 5.1.5
 

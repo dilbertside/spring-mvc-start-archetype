@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 class AboutController {
 
 	@ModelAttribute("module")
-	String module() {
+	public String module() {
 		return "about";
 	}
 
 	@GetMapping("/about")
-	String about() {
+	public String about() {
 		return "home/about";
 	}
 }

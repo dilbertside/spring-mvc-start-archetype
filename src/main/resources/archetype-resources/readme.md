@@ -31,8 +31,9 @@ docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spri
 Prerequisites: Java and [Apache Maven](https://maven.apache.org/download.cgi) must be installed.
 
 ```bash
-mvn clean package
+mvn clean package -Ph2
 ```
+with default dev profile activated and H2 type DB
 
 # Unit Test
 
@@ -41,7 +42,7 @@ mvn clean package
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.5 mvn test
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.5 mvn clean test
 ```
 
 ## locally
@@ -49,7 +50,7 @@ docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spri
 Prerequisites: Java and [Apache Maven](https://maven.apache.org/download.cgi) must be installed.
 
 ```bash
-mvn test
+mvn clean test
 ```
 
 # Run 
@@ -59,8 +60,10 @@ mvn test
 Drop the war built in any Web application container
 
 Example
+
 ### Tomcat 9 https://tomcat.apache.org/download-90.cgi 
-copy war in webapps directory and start 
+
+  copy war in `webapps` directory and start 
 
 ```bash
 cd apache-tomcat-9.0.14
@@ -68,33 +71,26 @@ bin/startup.sh && tail -n80 -f logs/catalina.out
 ```
 ## Docker container
 
+### Spotify docker builder
+
+```bash
+mvn clean install -Pdocker,dev,h2 -DskipTests
+docker run -it --rm -p 8080:8080 diside/webapp:1.0.0-dev
+```
+browse to http://localhost:8080/webapp/
+
+Change environment profile "dev", database type profile "h2" as required and eventually "diside/webapp:1.0.0-dev" if default values were changed
+
+### JIB
+
 it uses Google [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#war-projects) which does not require to have docker installed on the build machine
 
-### to a remote repo
 
 ```bash
-mvn compile jib:build
-```
-### export Dockerfile and build against Docker daemon
-
-```bash
-mvn jib:exportDockerContext
-mvn jib:dockerBuild
+mvn install -Pjib -DskipTests
 ```
 or with a maven container 
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -v /var/run/docker.sock:/var/run/docker.sock -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:latest sh -c "mvn compile jib:dockerBuild"
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -v /var/run/docker.sock:/var/run/docker.sock -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:latest sh -c "mvn install -Pjib -DskipTests"
 ```
-
-
-### save image container as archive
-
-```bash
-mvn compile jib:buildTar
-docker load --input target/*.tar
-```
-
-
-
-

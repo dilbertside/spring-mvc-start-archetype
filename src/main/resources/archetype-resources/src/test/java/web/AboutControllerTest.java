@@ -1,9 +1,12 @@
+#set( $dollar = '$' )
+#set( $pound = '#' )
+#set( $escape = '\' )
 package ${package}.web;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +20,7 @@ import ${package}.config.WebSecurityConfigurationAware;
 public class AboutControllerTest extends WebSecurityConfigurationAware {
     
   /**
-   * Test method for {@link ${package}.web.AboutController#about()}.
+   * Test method for {@link ${package}.web.AboutController${pound}about()}.
    */
   @Test
   @DisplayName("show about page")

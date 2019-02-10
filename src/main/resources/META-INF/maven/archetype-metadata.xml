@@ -22,7 +22,7 @@
       <defaultValue>bom</defaultValue>
     </requiredProperty>
     <requiredProperty key="parentVersion">
-      <defaultValue>5.1.6</defaultValue>
+      <defaultValue>5.1.7</defaultValue>
     </requiredProperty>
     <requiredProperty key="javaVersion">
       <defaultValue>1.8</defaultValue>
@@ -40,6 +40,12 @@
       <directory>src/main/jib</directory>
       <includes>
         <include>.keepme</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" >
+      <directory>src/main/docker</directory>
+      <includes>
+        <include>Dockerfile</include>
       </includes>
     </fileSet>
 		<fileSet filtered="true" packaged="true">

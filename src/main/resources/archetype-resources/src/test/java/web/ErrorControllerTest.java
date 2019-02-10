@@ -1,3 +1,6 @@
+#set( $dollar = '$' )
+#set( $pound = '#' )
+#set( $escape = '\' )
 package ${package}.web;
 
 import static org.hamcrest.Matchers.allOf;
@@ -21,7 +24,7 @@ public class ErrorControllerTest extends WebSecurityConfigurationAware {
     
   
   /**
-   * Test method for {@link ${package}.web.ErrorController#generalError(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.ui.Model)}.
+   * Test method for {@link ${package}.web.ErrorController${pound}generalError(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.ui.Model)}.
    * 
    * @throws Exception
    */
