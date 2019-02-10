@@ -1,4 +1,4 @@
-package ${package}.signup;
+package ${package}.web;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;

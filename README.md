@@ -8,7 +8,7 @@ Spring Web MVC 5.1 start Maven Archetype
 
 ## Try it out!
 
-[Demo application](https://spring-mvc-start-demo.herokuapp.com/) on [Heroku](https://www.heroku.com/home)
+[Demo application](https://spring-mvc-start-demo.herokuapp.com/) on [Heroku](https://www.heroku.com/home). [demo code](https://github.com/dilbertside/spring-mvc-start-archetype-demo)
 
 Application might be sleeping, please wait few seconds as it runs on [free plan](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping), Thank you.
 
@@ -18,15 +18,18 @@ The project is a Maven archetype for Spring MVC web application.
 It is inspired from https://github.io/kolorobot/spring-mvc-quickstart-archetype and was originally a fork.
 kolorobot archetype is based onto Spring Framework 5.0.x (as of January 2019)
 
-After refactoring a bit to upgrade Spring, the aim became to build a full Spring Framework MVC  Web application only (which should not contain any Spring Boot dependencies). In that purpose some extra configuration have been added Cache, Async, WebJars, Problem
+After refactoring a bit to upgrade Spring to 5.1, the aim became to build a full Spring Framework MVC  Web application only (which should not contain any Spring Boot dependencies). In that purpose some extra configuration have been added Cache, Async, WebJars, Problem.
+
 Why?
+
 While Spring Boot is a wonderful way to build a web application in no time, this archetype startup is a way to claim back control to all the opinionated choices made by Spring Boot team.
-In that way, the configuration is not hidden in Auto Configuration properties. Saying that reading Boot code helps to build a configuration without Spring Boot. For a complete Spring Boot Application you may want to have a look to [JHipster](https://www.jhipster.tech/)
+In that way, the configuration is not hidden in Auto Configuration properties. Saying that, reading Boot code helps to build a configuration without Spring Boot. For a complete Spring Boot Application you may want to have a look to [JHipster](https://www.jhipster.tech/)
 
 This starter can be used for 
 * educational purpose
 * migration purpose (ie from Spring Framework core 4.3.x to 5.1.x)
 * as a starting point to migrate from Spring Boot to Spring Framework core and Web MVC.
+* ...
 
 Notes:
 This archetype may not work with prior versions of Spring Framework 5.0.x, or 4.3.x, and Java 1.8
@@ -281,3 +284,7 @@ public interface MyRepository extends MongoRepository<MyDocument, String> {
 
 }
 ```
+
+# License
+
+This project is licensed under the MIT License - see the [file](LICENSE)  for details
