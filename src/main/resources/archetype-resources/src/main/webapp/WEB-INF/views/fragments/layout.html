@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    
-</head>
+
 <body>
 
   <head th:fragment="head (title)" th:with="title=${title} ?: ${@environment.getProperty('spring.application.name')}">

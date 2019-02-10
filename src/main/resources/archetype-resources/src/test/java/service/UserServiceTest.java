@@ -1,4 +1,4 @@
-package ${package}.account;
+package ${package}.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -45,15 +45,6 @@ public class UserServiceTest {
 
 	@Mock
 	private PasswordEncoder passwordEncoder;
-
-	//@Test
-	//@DisplayName("")
-	public void shouldInitializeWithTwoDemoUsers() {
-		// act
-		//userService.initialize();
-		// assert
-		verify(userRepositoryMock, times(2)).save(any(User.class));
-	}
 
 	@Test
 	@DisplayName("raise exception when user not found")

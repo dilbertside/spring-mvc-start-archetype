@@ -23,7 +23,7 @@ public class AboutControllerTest extends WebSecurityConfigurationAware {
   @DisplayName("show about page")
   public void displayAboutPage() throws Exception {
     mockMvc.perform(get("/about").with(csrf().asHeader()))
-      .andDo(print())
+      .andDo(log()) // to activate change logger ".result" level to DEBUG in logback-test.xml
       .andExpect(status().isOk())
       .andExpect(model().attributeExists("module"))
       .andExpect(view().name("home/about"))

@@ -3,7 +3,7 @@ package ${package}.web;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +23,7 @@ public class SignupControllerTest extends WebSecurityConfigurationAware {
   @DisplayName("show signup form")
   public void displaySignupForm() throws Exception {
     mockMvc.perform(get("/signup").with(csrf().asHeader()))
-      .andDo(print())
+      .andDo(log()) // to activate change logger ".result" level to DEBUG in logback-test.xml
       .andExpect(status().isOk())
       .andExpect(model().attributeExists("signupForm"))
       .andExpect(view().name("signup/signup"))
@@ -43,7 +43,7 @@ public class SignupControllerTest extends WebSecurityConfigurationAware {
         .param("email", "john@doe.com")
         .param("password", "doe")
       )
-    .andDo(print())
+    .andDo(log()) // to activate change logger ".result" level to DEBUG in logback-test.xml
     .andExpect(status().isFound())
     .andExpect(redirectedUrl("/"))
     ;

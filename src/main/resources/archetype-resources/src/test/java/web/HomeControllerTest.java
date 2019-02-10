@@ -3,7 +3,7 @@ package  ${package}.web;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.jupiter.api.DisplayName;
@@ -30,7 +30,7 @@ public class HomeControllerTest extends WebSecurityConfigurationAware {
   @DisplayName("show home page no credentials")
   public void displayHomePage() throws Exception {
     mockMvc.perform(get("/").with(csrf().asHeader()))
-      .andDo(print())
+      .andDo(log()) // to activate change logger ".result" level to DEBUG in logback-test.xml
       .andExpect(status().isOk())
       .andExpect(model().attributeExists("module"))
       .andExpect(view().name("home/homeNotSignedIn"))
@@ -52,7 +52,7 @@ public class HomeControllerTest extends WebSecurityConfigurationAware {
   @WithMockUser(password="user")
   public void displayHomePageWithLogin() throws Exception {
     mockMvc.perform(get("/").with(csrf().asHeader()))
-      .andDo(print())
+      .andDo(log()) // to activate change logger ".result" level to DEBUG in logback-test.xml
       .andExpect(status().isOk())
       .andExpect(model().attributeExists("module"))
       .andExpect(view().name("home/homeSignedIn"))
