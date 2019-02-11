@@ -9,6 +9,7 @@
 * use @EventListener instead of implements ApplicationListener
 * increase test coverage to 51% with coveralls, implement HomeControllerTest, AboutControllerTest, SigninControllerTest, ErrorControllerTest (total 21 tests)
 * add Spotify docker image assembly recipe
+* make a ready made Docker Hub image for trial
 
 ## 5.1.5
 

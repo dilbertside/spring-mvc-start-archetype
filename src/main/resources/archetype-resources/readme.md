@@ -23,7 +23,7 @@ IDEA https://projectlombok.org/setup/intellij
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.5 mvn clean package
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker: mvn clean package
 ```
 
 ## locally
@@ -42,7 +42,7 @@ with default dev profile activated and H2 type DB
 Prerequisites: [Docker](https://docs.docker.com/install/#supported-platforms) must be installed
 
 ```bash
-docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker:5.1.5 mvn clean test
+docker run -it --rm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven diside/spring-mvc-start-archetype-docker: mvn clean test
 ```
 
 ## locally
