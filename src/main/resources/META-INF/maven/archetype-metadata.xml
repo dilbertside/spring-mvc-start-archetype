@@ -22,7 +22,7 @@
       <defaultValue>bom</defaultValue>
     </requiredProperty>
     <requiredProperty key="parentVersion">
-      <defaultValue>5.1.7</defaultValue>
+      <defaultValue>5.1.8</defaultValue>
     </requiredProperty>
     <requiredProperty key="javaVersion">
       <defaultValue>1.8</defaultValue>

@@ -1,6 +1,8 @@
+## 5.1.7
 
+* bump BoM to 5.1.8 with Spring framework, boot, data, security upgrade
 
-## 5.1.6 snapshot
+## 5.1.6
 
 * refactor JPA configuration to detect dialect if not set
 * really use embedded database for unit test
