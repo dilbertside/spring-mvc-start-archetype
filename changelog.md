@@ -1,3 +1,7 @@
+## 5.1.9
+
+* bump BoM to 5.1.11 with Spring framework, boot, data upgrade
+
 ## 5.1.8
 
 * bump BoM to 5.1.10 with Spring framework, boot, data, security upgrade

@@ -12,11 +12,11 @@ clear
 )>&2
 
 #version archetype
-VERSION_SMSA=5.1.8
+VERSION_SMSA=5.1.9
 #version docker maven archetype runner
-VERSION_SMSAD=5.1.8
+VERSION_SMSAD=5.1.9
 #version Bill of Material generated project parent POM
-VERSION_BOM=5.1.10
+VERSION_BOM=5.1.11
 
 mvn -q versions:set -DnewVersion="$VERSION_SMSA"
 
