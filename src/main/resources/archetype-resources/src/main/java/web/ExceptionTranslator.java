@@ -26,7 +26,7 @@ import org.zalando.problem.ProblemBuilder;
 import org.zalando.problem.Status;
 import org.zalando.problem.spring.web.advice.ProblemHandling;
 import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait;
-import org.zalando.problem.spring.web.advice.validation.ConstraintViolationProblem;
+import org.zalando.problem.violations.ConstraintViolationProblem;
 
 import com.google.common.base.Throwables;
 import ${package}.dto.ProblemFieldError;
