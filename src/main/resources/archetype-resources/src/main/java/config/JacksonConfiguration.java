@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import org.zalando.problem.ProblemModule;
-import org.zalando.problem.validation.ConstraintViolationProblemModule;
+import org.zalando.problem.violations.ConstraintViolationProblemModule;
 
 /**
  * 

@@ -1,3 +1,8 @@
+## 5.1.10
+
+* bump BoM to 5.1.14 with Spring framework, boot, data upgrade
+* fix zalando import change
+
 ## 5.1.9
 
 * bump BoM to 5.1.11 with Spring framework, boot, data upgrade
