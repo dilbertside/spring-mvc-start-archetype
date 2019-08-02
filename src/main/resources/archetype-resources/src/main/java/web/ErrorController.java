@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.google.common.base.Throwables;
 
 @Controller
-class ErrorController {
+public class ErrorController {
 
 	/**
 	 * Display an error page, as defined in web.xml <code>custom-error</code> element.

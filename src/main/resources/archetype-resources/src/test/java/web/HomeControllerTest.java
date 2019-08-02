@@ -20,7 +20,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.test.context.support.WithMockUser;
 
 
-@Tag("controller")
+@Tag("home controller")
 public class HomeControllerTest extends WebSecurityConfigurationAware {
     
   @Autowired

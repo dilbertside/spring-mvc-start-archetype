@@ -1,6 +1,5 @@
 package ${package}.web.rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.Assert;
@@ -12,14 +11,11 @@ import ${package}.repository.UserRepository;
 import java.security.Principal;
 
 @RestController
+@lombok.extern.slf4j.Slf4j
+@lombok.RequiredArgsConstructor
 public class AccountResource {
 
   private final UserRepository userRepository;
-
-  @Autowired
-  public AccountResource(UserRepository userRepository) {
-    this.userRepository = userRepository;
-  }
 
   @GetMapping("account/current")
   @ResponseStatus(value = HttpStatus.OK)

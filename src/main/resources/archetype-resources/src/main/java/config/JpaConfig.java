@@ -35,7 +35,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = Application.class)
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
-class JpaConfig {
+public class JpaConfig {
 
   @Configuration
   @Profile({"!test"})

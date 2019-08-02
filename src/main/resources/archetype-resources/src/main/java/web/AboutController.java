@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-class AboutController {
+public class AboutController {
 
 	@ModelAttribute("module")
 	public String module() {

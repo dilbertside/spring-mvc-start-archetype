@@ -2,29 +2,27 @@ package ${package}.web;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dbs.lib.web.Ajax;
+import com.dbs.lib.web.MessageHelper;
+
 import ${package}.dto.SignupForm;
 import ${package}.entity.User;
 import ${package}.service.UserService;
-import ${package}.web.support.*;
 
 @Controller
-class SignupController {
+@lombok.extern.slf4j.Slf4j
+@lombok.RequiredArgsConstructor
+public class SignupController {
 
 	private static final String SIGNUP_VIEW_NAME = "signup/signup";
 
-	private UserService userService;
-
-	@Autowired
-	public SignupController(UserService userService) {
-    this.userService = userService;
-  }
+	final UserService userService;
 
   @GetMapping("signup")
 	public String signup(Model model, @RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {

@@ -8,6 +8,7 @@ import java.io.Serializable;
  *
  */
 @lombok.Data
+@lombok.RequiredArgsConstructor
 public class ProblemFieldError implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -17,17 +18,5 @@ public class ProblemFieldError implements Serializable {
   private final String field;
 
   private final String message;
-
-  /**
-   * 
-   * @param dto to set
-   * @param field to set
-   * @param message to set
-   */
-  public ProblemFieldError(String dto, String field, String message) {
-    this.objectName = dto;
-    this.field = field;
-    this.message = message;
-  }
 
 }

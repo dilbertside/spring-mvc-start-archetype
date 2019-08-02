@@ -21,14 +21,14 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @PropertySource("classpath:mail.properties")
 public class EmailConfig {
 
-	@Autowired 
-	private Environment environment;
+  @Autowired
+  private Environment environment;
 	
-	/**
-	 * from org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration
-	 * @return {@link SpringTemplateEngine}
-	 */
-	@Bean
+  /**
+   * from org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration
+   * @return {@link SpringTemplateEngine}
+   */
+  @Bean
   public SpringTemplateEngine emailTemplateEngine() {
     SpringTemplateEngine engine = new SpringTemplateEngine();
     engine.addTemplateResolver(emailTemplateResolver());

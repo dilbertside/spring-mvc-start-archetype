@@ -11,7 +11,7 @@ import ${package}.Application;
 @Configuration
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackageClasses = Application.class)
-class ApplicationConfig {
+public class ApplicationConfig {
 
   @Bean
   public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {

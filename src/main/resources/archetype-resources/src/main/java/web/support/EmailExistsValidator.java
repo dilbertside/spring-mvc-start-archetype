@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import ${package}.repository.UserRepository;
 
 @Component
-class EmailExistsValidator implements ConstraintValidator<${package}.web.support.EmailExists, String> {
+public class EmailExistsValidator implements ConstraintValidator<${package}.web.support.EmailExists, String> {
 
   private final UserRepository userRepository;
 

@@ -19,7 +19,7 @@ import ${package}.config.WebSecurityConfigurationAware;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.test.context.support.WithMockUser;
 
-@Tag("controller")
+@Tag("error controller")
 public class ErrorControllerTest extends WebSecurityConfigurationAware {
     
   

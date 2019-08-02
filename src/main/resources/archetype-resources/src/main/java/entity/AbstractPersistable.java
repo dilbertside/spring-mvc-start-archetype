@@ -4,13 +4,17 @@
 package ${package}.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
-
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringExclude;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.domain.Persistable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public abstract class AbstractPersistable<PK extends Serializable> implements Persistable<PK> {
 
   @XmlTransient
+  @ToStringExclude
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private PK id;
@@ -33,8 +38,9 @@ public abstract class AbstractPersistable<PK extends Serializable> implements Pe
    * (non-Javadoc)
    * @see org.springframework.data.domain.Persistable#getId()
    */
+  @Override
   public PK getId() {
-    return id;
+    return this.id;
   }
 
   /**
@@ -52,6 +58,7 @@ public abstract class AbstractPersistable<PK extends Serializable> implements Pe
    * @see org.springframework.data.domain.Persistable#isNew()
    */
   @JsonIgnore
+  @Override
   public boolean isNew() {
     return null == getId();
   }
@@ -63,6 +70,12 @@ public abstract class AbstractPersistable<PK extends Serializable> implements Pe
   @Override
   public String toString() {
     return String.format("Entity of type %s with id: %s", this.getClass().getName(), getId());
+  }
+  
+  @Transient
+  @JsonIgnore
+  public String toStringFormated() {
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
   }
 
   /*
@@ -90,8 +103,6 @@ public abstract class AbstractPersistable<PK extends Serializable> implements Pe
    */
   @Override
   public int hashCode() {
-    int hashCode = 17;
-    hashCode += null == getId() ? 0 : getId().hashCode() * 31;
-    return hashCode;
+    return Objects.hashCode(getId());
   }
 }

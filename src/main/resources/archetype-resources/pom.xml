@@ -44,6 +44,10 @@
       <artifactId>caffeine</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.github.dilbertside</groupId>
+      <artifactId>commons-dbs</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
     </dependency>
@@ -260,34 +264,28 @@
       <plugin>
         <groupId>com.github.ekryd.sortpom</groupId>
         <artifactId>sortpom-maven-plugin</artifactId>
-        <version>${maven-sortpom-plugin.version}</version>
       </plugin>
 
       <plugin>
         <!-- https://github.com/heroku/heroku-maven-plugin -->
         <groupId>com.heroku.sdk</groupId>
         <artifactId>heroku-maven-plugin</artifactId>
-        <version>${heroku-maven-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>${maven-dependency-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven-resources-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>${maven-war-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>

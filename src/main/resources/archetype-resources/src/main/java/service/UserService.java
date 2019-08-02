@@ -9,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,18 +34,14 @@ import ${package}.web.support.SecurityUtils;
  */
 @Service
 @Transactional
+@lombok.extern.slf4j.Slf4j
+@lombok.RequiredArgsConstructor
 public class UserService {
 
-  private final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-  @Inject
-  private PasswordEncoder passwordEncoder;
-
-  @Inject
-  private UserRepository userRepository;
-
-  @Inject
-  private AuthorityRepository authorityRepository;
+  final PasswordEncoder passwordEncoder;
+  final UserRepository userRepository;
+  final AuthorityRepository authorityRepository;
 
   
   @Transactional(readOnly = true)
@@ -84,7 +77,7 @@ public class UserService {
     authorities.add(authority);
     newUser.setRoles(authorities);
     userRepository.save(newUser);
-    logger.debug("Created Information for User: {}", newUser);
+    log.debug("Created Information for User: {}", newUser);
     return newUser;
   }
 
@@ -135,7 +128,7 @@ public class UserService {
     user.setPassword(encryptedPassword);
     user.setActivated(true);
     userRepository.save(user);
-    logger.debug("Created Information for User: {}", user);
+    log.debug("Created Information for User: {}", user);
     return user;
   }
   
@@ -176,7 +169,7 @@ public class UserService {
         }
       }
       u = userRepository.save(u);
-      logger.debug("Changed Information for User: {}", u);
+      log.debug("Changed Information for User: {}", u);
     } else {
       s = false; 
     }
@@ -197,7 +190,7 @@ public class UserService {
       u.setEmail(email);       
       u.setLangKey(langKey);
       userRepository.save(u);
-      logger.debug("Changed Information for User: {}", u);
+      log.debug("Changed Information for User: {}", u);
     });
   }
 
@@ -222,7 +215,7 @@ public class UserService {
       Set<Authority> managedAuthorities = u.getRoles();
       managedAuthorities.clear();
       authorities.stream().forEach(authority -> managedAuthorities.add(authorityRepository.findOneByName(authority).get()));
-      logger.debug("Changed Information for User: {}", u);
+      log.debug("Changed Information for User: {}", u);
     });
   }
 
@@ -233,7 +226,7 @@ public class UserService {
   public void deleteUser(String login) {
     userRepository.findOneByLogin(login).ifPresent(u -> {
       userRepository.delete(u);
-      logger.debug("Deleted User: {}", u);
+      log.debug("Deleted User: {}", u);
     });
   }
 
@@ -246,7 +239,7 @@ public class UserService {
       String encryptedPassword = passwordEncoder.encode(password);
       u.setPassword(encryptedPassword);
       userRepository.save(u);
-      logger.debug("Changed password for User: {}", u);
+      log.debug("Changed password for User: {}", u);
     });
   }
 
@@ -297,7 +290,7 @@ public class UserService {
     Instant now = Instant.now();
     List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
     for (User user : users) {
-      logger.debug("Deleting not activated user {}", user.getLogin());
+      log.debug("Deleting not activated user {}", user.getLogin());
       userRepository.delete(user);
     }
   }

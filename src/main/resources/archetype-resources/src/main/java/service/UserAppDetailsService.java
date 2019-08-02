@@ -3,10 +3,8 @@ package ${package}.service;
 import java.util.Locale;
 import java.util.Optional;
 
-import javax.inject.Inject;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.spring.webapp.service.UserService;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,17 +18,16 @@ import ${package}.repository.UserRepository;
  * Authenticate a user from the database.
  */
 @Service("userDetailsService")
+@lombok.extern.slf4j.Slf4j
+@lombok.RequiredArgsConstructor
 public class UserAppDetailsService implements UserDetailsService {
 
-  private final Logger logger = LoggerFactory.getLogger(UserAppDetailsService.class);
-
-  @Inject
-  private UserRepository userRepository;
+  final UserRepository userRepository;
 
   @Override
   @Transactional
   public UserDetails loadUserByUsername(final String login) {
-    logger.debug("Authenticating {}", login);
+    log.debug("Authenticating {}", login);
     String lowercaseLogin = login.toLowerCase(Locale.ENGLISH);
     Optional<User> userFromDatabase = userRepository.findOneByLogin(lowercaseLogin);
     return userFromDatabase.map(user -> {

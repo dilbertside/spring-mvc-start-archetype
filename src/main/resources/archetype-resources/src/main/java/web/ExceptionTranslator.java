@@ -5,11 +5,10 @@ package ${package}.web;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -27,7 +26,10 @@ import org.zalando.problem.Status;
 import org.zalando.problem.spring.web.advice.ProblemHandling;
 import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait;
 import org.zalando.problem.violations.ConstraintViolationProblem;
-
+import com.dbs.lib.Utils;
+import com.dbs.lib.dto.SimpleResponse;
+import com.dbs.lib.dto.enumeration.ErrorCode;
+import com.dbs.lib.exception.ServiceException;
 import com.google.common.base.Throwables;
 import ${package}.dto.ProblemFieldError;
 import ${package}.web.support.ErrorConstants;
@@ -38,6 +40,7 @@ import ${package}.web.support.ErrorConstants;
  * The error response follows RFC7807 - Problem Details for HTTP APIs (https://tools.ietf.org/html/rfc7807)
  */
 @ControllerAdvice
+@lombok.extern.slf4j.Slf4j
 public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait {
 
   /**
@@ -100,6 +103,20 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
     return create(ex, problem, request);
   }
 
+  @ExceptionHandler(ServiceException.class)
+  public ResponseEntity<SimpleResponse<?>> handleServiceException(final ServiceException e, final NativeWebRequest request) {
+      log.error("Service Error {}", Utils.errorMessage(e));
+        return ResponseEntity.status(e.getErrorCode().getHttpStatus())
+                .body(new SimpleResponse<>(e.getErrorCode(), Utils.errorMessage(e)));
+  }
+ 
+  @ExceptionHandler(NullPointerException.class)
+  public ResponseEntity<SimpleResponse<?>> handleException(final NullPointerException e, final NativeWebRequest request) {
+      log.error("General error", e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new SimpleResponse<>(ErrorCode.error, Utils.errorMessage(e)));
+  }
+  
   @ExceptionHandler(ServletRequestBindingException.class)
   public ResponseEntity<Problem> handleServletRequestBinding(final ServletRequestBindingException exception, final NativeWebRequest request) {
     return create(Status.BAD_REQUEST, exception, request);

@@ -8,7 +8,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.util.ClassUtils;
-import org.thymeleaf.exceptions.ConfigurationException;
 
 import javax.sql.DataSource;
 
@@ -34,7 +33,7 @@ public class EmbeddedDataSourceConfig {
     } else if (h2dbPresent) {
       edt = EmbeddedDatabaseType.H2;
     } else {
-      throw new ConfigurationException("NO database driver available");
+      throw new RuntimeException("NO database driver available");
     }
     return new EmbeddedDatabaseBuilder()
             .setType(edt)

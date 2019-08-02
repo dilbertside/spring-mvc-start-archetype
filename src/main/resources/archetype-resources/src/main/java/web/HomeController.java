@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-class HomeController {
+public class HomeController {
 
 	@ModelAttribute("module")
 	public String module() {

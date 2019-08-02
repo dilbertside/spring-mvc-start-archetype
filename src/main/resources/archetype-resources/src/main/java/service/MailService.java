@@ -9,9 +9,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -28,9 +26,9 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
  * </p>
  */
 @Service
+@lombok.extern.slf4j.Slf4j
+@lombok.RequiredArgsConstructor
 public class MailService {
-
-  public static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private final JavaMailSender javaMailSender;
 
@@ -40,27 +38,12 @@ public class MailService {
 
   private char emailSeparator = ',';
   
+  @Value("${dollar}{mail.from:noreply@doe.com}")
   private String from;
   
+  @Value("${dollar}{mail.cc: }")
   private String cc;
   
-  /**
-   * Mail service constructor
-   * 
-   * @param appProperties application properties
-   * @param javaMailSender mail sender details
-   * @param emailTemplateEngine thymeleaf template engine
-   */
-  @Autowired
-  public MailService(Environment environment, JavaMailSender javaMailSender, SpringTemplateEngine emailTemplateEngine, MessageSource messageSource) {
-    this.javaMailSender = javaMailSender;
-    this.emailTemplateEngine = emailTemplateEngine;
-    this.messageSource = messageSource;
-    this.from = environment.getProperty("mail.from", "noreply@doe.com");
-    this.cc = environment.getProperty("mail.cc", "");
-  }
-
-
   /**
    * General send email function
    * 
@@ -72,7 +55,7 @@ public class MailService {
    */
   @Async
   public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
-    logger.debug("Send email[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}", isMultipart, isHtml, to, subject, content);
+    log.debug("Send email[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}", isMultipart, isHtml, to, subject, content);
 
     // Prepare message using a Spring helper
     MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -87,9 +70,9 @@ public class MailService {
       message.setText(content, isHtml);
 
       javaMailSender.send(mimeMessage);
-      logger.debug("Sent email to '{}'", to);
+      log.debug("Sent email to '{}'", to);
     } catch (Exception e) {
-      logger.error("Email could not be sent", e);
+      log.error("Email could not be sent", e);
     }
   }
 
@@ -104,7 +87,7 @@ public class MailService {
    */
   @Async
   public void sendEmail(String to, String cc, String bcc, String subject, String content) throws MessagingException {
-    logger.debug("Send email to '{}' with subject '{}' and content={}", to, subject, content);
+    log.debug("Send email to '{}' with subject '{}' and content={}", to, subject, content);
 
     // Prepare message using a Spring helper
     MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -124,9 +107,9 @@ public class MailService {
 
 
       javaMailSender.send(mimeMessage);
-      logger.debug("Sent email to User '{}'", to);
+      log.debug("Sent email to User '{}'", to);
     } catch (Exception e) {
-      logger.warn("Email could not be sent to user '{}'", to, e);
+      log.warn("Email could not be sent to user '{}'", to, e);
     }
   }
 

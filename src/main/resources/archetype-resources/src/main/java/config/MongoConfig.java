@@ -21,7 +21,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @Lazy
 // @EnableMongoRepositories(basePackageClasses = Application.class)
-class MongoConfig {
+public class MongoConfig {
 
     @Bean
     public MongoDbFactory mongoDbFactory() throws UnknownHostException {
