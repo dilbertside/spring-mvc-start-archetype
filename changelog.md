@@ -1,3 +1,8 @@
+## 5.1.11
+
+* bump BoM to 5.1.16 with commons-dbs upgrade
+* refactor error handling
+
 ## 5.1.10
 
 * bump BoM to 5.1.14 with Spring framework, boot, data upgrade
